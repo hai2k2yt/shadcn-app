@@ -1,14 +1,16 @@
 'use client'
 
 import z from "zod"
-import React from 'react'
+import React, {useTransition} from 'react'
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {signIn} from "next-auth/react";
+import {toast} from "sonner";
 
 const formSchema = z.object({
     email: z.string().min(1, {
@@ -22,10 +24,15 @@ const formSchema = z.object({
   }
 )
 
-const LoginForm = () => {
-  const router = useRouter();
+type LoginFormProps = z.infer<typeof formSchema>
 
-  const form = useForm<z.infer<typeof formSchema>>({
+const LoginForm = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [loading, startTransition] = useTransition();
+  const callbackUrl = searchParams.get('callbackUrl');
+
+  const form = useForm<LoginFormProps>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
@@ -33,8 +40,15 @@ const LoginForm = () => {
     }
   })
 
-  const handleSubmit = () => {
-    router.push('/')
+  const handleSubmit = async (data: LoginFormProps) => {
+    console.log(callbackUrl);
+    startTransition(() => {
+      signIn('credentials', {
+        email: data.email,
+        callbackUrl: callbackUrl ?? '/dashboard'
+      })
+    })
+    toast.success('Login successfully')
   }
 
   return (
@@ -100,15 +114,13 @@ const LoginForm = () => {
                 )}
               />
 
-              <Button className={'w-full dark:bg-slate-800 dark:text-white'}>
+              <Button disabled={loading} className={'w-full dark:bg-slate-800 dark:text-white'}>
                 Login
               </Button>
             </form>
           </Form>
         </CardContent>
       </Card>
-
-
     </>
   )
 }

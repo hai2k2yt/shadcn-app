@@ -3,8 +3,17 @@ import {Folder, MessageCircle, Newspaper, User} from "lucide-react";
 import React from "react";
 import PostsTable from "@/components/posts/PostsTable";
 import AnalyticsChart from "@/components/dashboards/AnalyticsChart";
+import {auth} from "@/lib/auth";
+import {redirect} from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+
+  const session = await auth();
+
+  if (!session?.user) {
+    return redirect('/');
+  }
+
   return (
     <>
       <div className={'flex flex-col md:flex-row justify-between gap-5 mb-5'}>
