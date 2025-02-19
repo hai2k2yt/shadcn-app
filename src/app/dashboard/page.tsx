@@ -1,8 +1,8 @@
-import DashboardCard from "@/components/dashboards/DashboardCard";
+import DashboardCard from "@/components/dashboards/dashboard-card";
 import {Folder, MessageCircle, Newspaper, User} from "lucide-react";
 import React from "react";
-import PostsTable from "@/components/posts/PostsTable";
-import AnalyticsChart from "@/components/dashboards/AnalyticsChart";
+import PostsTable from "@/components/posts/posts-table";
+import AnalyticsChart from "@/components/dashboards/analytics-chart";
 import {auth} from "@/lib/auth";
 import {redirect} from "next/navigation";
 

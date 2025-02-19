@@ -1,8 +1,8 @@
 import React from 'react'
 
-import PostsTable from "@/components/posts/PostsTable";
-import BackButton from "@/components/BackButton";
-import PostsPagination from "@/components/posts/PostsPagination";
+import PostsTable from "@/components/posts/posts-table";
+import BackButton from "@/components/back-button";
+import PostsPagination from "@/components/posts/posts-pagination";
 
 const PostsPage = () => {
   return (

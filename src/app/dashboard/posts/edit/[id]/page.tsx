@@ -1,9 +1,9 @@
 'use client'
 
-import BackButton from "@/src/components/BackButton";
+import BackButton from "@/components/back-button";
 import z from "zod"
 import React, {use} from 'react'
-import posts from '@/src/data/posts'
+import posts from '@/data/posts'
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";

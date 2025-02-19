@@ -23,15 +23,19 @@ const Sidebar = () => {
         <CommandGroup heading="Suggestions">
           <CommandItem>
             <LayoutDashboard className="mr-2 h-4 w-4"/>
-            <Link href='/'>Dashboard</Link>
+            <Link href='/dashboard'>Dashboard</Link>
           </CommandItem>
           <CommandItem>
             <Newspaper className="mr-2 h-4 w-4"/>
-            <Link href='/posts'>Posts</Link>
+            <Link href='/dashboard/posts'>Posts</Link>
           </CommandItem>
           <CommandItem>
             <Folders className="mr-2 h-4 w-4"/>
             <Link href='#'>Categories</Link>
+          </CommandItem>
+          <CommandItem>
+            <Folders className="mr-2 h-4 w-4"/>
+            <Link href='/dashboard/kanban'>Kanban</Link>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator/>

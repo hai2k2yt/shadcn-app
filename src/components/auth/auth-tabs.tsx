@@ -1,8 +1,8 @@
 import React from 'react'
 
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
-import LoginForm from "@/components/auth/LoginForm";
-import RegisterForm from "@/components/auth/RegisterForm";
+import LoginForm from "@/components/auth/login-form";
+import RegisterForm from "@/components/auth/register-form";
 
 const AuthTabs = () => {
   return (

@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import ThemeToggler from "@/components/ThemeToggler";
+import ThemeToggler from "@/components/theme-toggler";
 
 const Navbar = () => {
   return (
